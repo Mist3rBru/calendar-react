@@ -1,9 +1,9 @@
-import { FormEvent, useContext, useEffect, useState } from 'react'
-import { AppLanguage, CalendarContext } from '../../context'
-import { useLang } from '../../hooks'
+import { FormEvent, useEffect, useState } from 'react'
+import { AppLanguage } from '../../context'
+import { useCalendar, useLang } from '../../hooks'
 
-export function TodoForm() {
-  const { date: appDate, setTodos } = useContext(CalendarContext)
+export function TodoForm () {
+  const { date: appDate, setTodos } = useCalendar()
   const { lang } = useLang()
   const [description, setDescription] = useState('')
   const [timeStart, setTimeStart] = useState('')
@@ -14,7 +14,7 @@ export function TodoForm() {
   const submit: { [key in AppLanguage]: string } = {
     en: 'Send',
     es: 'Enviar',
-    pt: 'Enviar',
+    pt: 'Enviar'
   }
 
   const handleSubmit = (event: FormEvent) => {
@@ -25,8 +25,8 @@ export function TodoForm() {
         date,
         description,
         timeEnd,
-        timeStart,
-      },
+        timeStart
+      }
     ])
   }
 

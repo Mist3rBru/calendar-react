@@ -1,11 +1,11 @@
-import { useContext, useEffect, useState } from 'react'
-import { CalendarContext } from '../../context'
+import { useEffect, useState } from 'react'
+import { useCalendar } from '../../hooks'
 import { CalendarDate } from './calendar-date'
 import { CalendarHeader } from './calendar-header'
 import { CalendarWeekdays } from './calendar-weekdays'
 
-export function Calendar () {
-  const { date, setDate, todos } = useContext(CalendarContext)
+export function Calendar() {
+  const { date, setDate, todos } = useCalendar()
   const [prevDays, setPrevDays] = useState<number[]>([])
   const [currentDays, setCurrentDays] = useState<number[]>([])
   const [nextDays, setNextDays] = useState<number[]>([])
@@ -74,14 +74,16 @@ export function Calendar () {
             `}
             day={day}
             onClick={selectDate}
-            todos={todos.filter(todo => {
-              const dateParts = todo.date.replace(/-0/g, '-').split('-')
-              return (
-                dateParts[2] === day.toString() &&
-                dateParts[1] === (date.getMonth() + 1).toString() &&
-                dateParts[0] === date.getFullYear().toString()
-              )
-            }).length}
+            todos={
+              todos.filter(todo => {
+                const dateParts = todo.date.replace(/-0/g, '-').split('-')
+                return (
+                  dateParts[2] === day.toString() &&
+                  dateParts[1] === (date.getMonth() + 1).toString() &&
+                  dateParts[0] === date.getFullYear().toString()
+                )
+              }).length
+            }
           />
         ))}
         {nextDays.map(day => (

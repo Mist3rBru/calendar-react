@@ -1,9 +1,7 @@
-import { useContext } from 'react'
-import { CalendarContext } from '../../context'
-import { useLang } from '../../hooks'
+import { useCalendar, useLang } from '../../hooks'
 
 export function CalendarHeader () {
-  const { date, setDate } = useContext(CalendarContext)
+  const { date, setDate } = useCalendar()
   const { lang } = useLang()
 
   const prevMonth = () => {

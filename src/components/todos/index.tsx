@@ -1,11 +1,12 @@
-import { useContext, useState, useEffect } from 'react'
-import { CalendarContext, ITodo } from '../../context'
+import { useState, useEffect } from 'react'
+import { ITodo } from '../../context'
+import { useCalendar } from '../../hooks'
 import { TodoForm } from './todo-form'
 import { TodoHeader } from './todo-header'
 import { TodoItem } from './todo-item'
 
-export function Todos () {
-  const { date, todos, setTodos } = useContext(CalendarContext)
+export function Todos() {
+  const { date, todos, setTodos } = useCalendar()
   const [filteredTodos, setFilteredTodos] = useState(todos)
 
   const deleteItem = (deleteTodo: ITodo) => {
