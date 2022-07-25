@@ -1,8 +1,8 @@
-import { memo, useContext } from 'react'
-import { LanguageContext } from '../../context'
+import { memo } from 'react'
+import { useLang } from '../../hooks'
 
 function CalendarWeekdaysComponent () {
-  const { lang } = useContext(LanguageContext)
+  const { lang } = useLang()
   const weekdays = new Array(7)
   const date = new Date()
 

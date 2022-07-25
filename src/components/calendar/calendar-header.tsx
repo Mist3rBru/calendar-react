@@ -1,12 +1,13 @@
 import { useContext } from 'react'
-import { CalendarContext, LanguageContext } from '../../context'
+import { CalendarContext } from '../../context'
+import { useLang } from '../../hooks'
 
 export function CalendarHeader () {
   const { date, setDate } = useContext(CalendarContext)
-  const { lang } = useContext(LanguageContext)
+  const { lang } = useLang()
 
   const prevMonth = () => {
-    setDate((date) => new Date(date.getFullYear(), date.getMonth() - 1, 1))
+    setDate(date => new Date(date.getFullYear(), date.getMonth() - 1, 1))
   }
 
   const resetCalendar = () => {
@@ -14,7 +15,7 @@ export function CalendarHeader () {
   }
 
   const nextMonth = () => {
-    setDate((date) => new Date(date.getFullYear(), date.getMonth() + 1, 1))
+    setDate(date => new Date(date.getFullYear(), date.getMonth() + 1, 1))
   }
 
   return (

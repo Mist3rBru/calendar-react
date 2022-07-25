@@ -1,8 +1,9 @@
 import { useContext } from 'react'
-import { CalendarContext, LanguageContext } from '../../context'
+import { CalendarContext } from '../../context'
+import { useLang } from '../../hooks'
 
-export function TodoHeader () {
-  const { lang } = useContext(LanguageContext)
+export function TodoHeader() {
+  const { lang } = useLang()
   const { date } = useContext(CalendarContext)
 
   return (
@@ -18,7 +19,7 @@ export function TodoHeader () {
           weekday: 'long',
           day: 'numeric',
           month: 'short',
-          year: 'numeric'
+          year: 'numeric',
         })}
       </p>
     </header>

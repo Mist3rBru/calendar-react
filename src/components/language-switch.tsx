@@ -1,9 +1,9 @@
-import { useContext } from 'react'
-import { AppLanguage, LanguageContext } from '../context'
+import { AppLanguage } from '../context'
+import { useLang } from '../hooks'
 import Select from 'react-select'
 
 export function LanguageSwitch () {
-  const context = useContext(LanguageContext)
+  const context = useLang()
   // eslint-disable-next-line no-unused-vars
   const languages: { [lang in AppLanguage]: string } = {
     en: 'English',
